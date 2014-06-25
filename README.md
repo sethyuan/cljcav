@@ -1,6 +1,6 @@
 # cljcav
 
-General library complementing clojure.core.
+General library complementing clojure.core and cljs.core.
 
 ## Installation
 

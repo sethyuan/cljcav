@@ -1,5 +1,5 @@
 (defproject cav/cljcav "0.1.0"
-  :description "General library complementing clojure.core."
+  :description "General library complementing clojure.core and cljs.core."
   :url "https://github.com/sethyuan/cljcav"
   :license {:name "MIT"}
   :dependencies [[org.clojure/clojure "1.6.0"]]
