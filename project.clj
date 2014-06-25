@@ -1,4 +1,4 @@
-(defproject cav/cljcav "0.1.0"
+(defproject cav/cljcav "0.1.1"
   :description "General library complementing clojure.core and cljs.core."
   :url "https://github.com/sethyuan/cljcav"
   :license {:name "MIT"}
@@ -9,6 +9,7 @@
             [lein-cljsbuild "1.0.3"]
             [com.cemerick/clojurescript.test "0.3.1"]
             [codox "0.8.9"]]
+  :hooks [cljx.hooks]
   :source-paths ["src/clj" "src/cljs"]
   :test-paths ["test/clj" "target/tests"]
   :codox {:language :clojure
@@ -37,9 +38,5 @@
                                    :pretty-print true}}]
               :test-commands {"unit-tests" ["node" "test/node_runner.js"
                                             "test/run.js"]}} 
-  :aliases {"test!" ["do" ["cljx"] ["test"]]
-            "check!" ["do" ["cljx"] ["check"]]
-            "jar!" ["do" ["cljx"] ["jar"]]
-            "uberjar!" ["do" ["cljx"] ["uberjar"]]
-            "cljstest!" ["do" ["cljx"] ["cljsbuild" "once"] ["cljsbuild" "test"]]}
+  :aliases {"cljstest!" ["do" ["cljsbuild" "once"] ["cljsbuild" "test"]]}
   :jvm-opts ^:replace [])
