@@ -38,5 +38,5 @@
                                    :pretty-print true}}]
               :test-commands {"unit-tests" ["node" "test/node_runner.js"
                                             "test/run.js"]}} 
-  :aliases {"cljstest!" ["do" ["cljsbuild" "once"] ["cljsbuild" "test"]]}
+  :aliases {"cljstest" ["do" ["cljx"] ["cljsbuild" "test"]]}
   :jvm-opts ^:replace [])

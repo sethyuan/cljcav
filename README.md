@@ -4,9 +4,7 @@ General library complementing clojure.core and cljs.core.
 
 ## Installation
 
-```clojure
-[cav/cljcav "0.1.0"]
-```
+[![cav/cljcav](http://clojars.org/cav/cljcav/latest-version.svg)](http://clojars.org/cav/cljcav)
 
 ## Example
 
