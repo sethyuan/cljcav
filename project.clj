@@ -6,7 +6,7 @@
   :profiles {:dev {:dependencies [[org.clojure/clojurescript "0.0-2234"]]}}
   :plugins [[com.keminglabs/cljx "0.4.0"]
             [lein-cljsbuild "1.0.3"]
-            [com.cemerick/clojurescript.test "0.3.0"]
+            [com.cemerick/clojurescript.test "0.3.1"]
             [codox "0.8.9"]]
   :source-paths ["src/clj" "src/cljs"]
   :test-paths ["test/clj" "target/tests"]
@@ -31,14 +31,13 @@
                         :compiler {:output-to "target/cljcav-test.js"
                                    :output-dir "target/cljcav-test-out"
                                    :source-map "target/cljcav-test.js.map"
-                                   :optimizations :simple
+                                   :optimizations :none
                                    :target :nodejs
                                    :pretty-print true}}]
               :test-commands {"unit-tests" ["node" "test/node_runner.js"
-                                            "target/cljcav-test.js"]}} 
+                                            "test/run.js"]}} 
   :aliases {"test!" ["do" ["cljx"] ["test"]]
             "check!" ["do" ["cljx"] ["check"]]
             "jar!" ["do" ["cljx"] ["jar"]]
             "uberjar!" ["do" ["cljx"] ["uberjar"]]
-            ;; "cljstest!" ["do" ["cljx"] ["cljsbuild" "once"] ["cljsbuild" "test"]]
-            })
+            "cljstest!" ["do" ["cljx"] ["cljsbuild" "once"] ["cljsbuild" "test"]]})
