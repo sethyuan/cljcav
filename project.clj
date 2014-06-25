@@ -3,7 +3,8 @@
   :url "https://github.com/sethyuan/cljcav"
   :license {:name "MIT"}
   :dependencies [[org.clojure/clojure "1.6.0"]]
-  :profiles {:dev {:dependencies [[org.clojure/clojurescript "0.0-2234"]]}}
+  :profiles {:dev {:dependencies [[org.clojure/clojurescript "0.0-2234"]
+                                  [criterium "0.4.3"]]}}
   :plugins [[com.keminglabs/cljx "0.4.0"]
             [lein-cljsbuild "1.0.3"]
             [com.cemerick/clojurescript.test "0.3.1"]
@@ -40,4 +41,5 @@
             "check!" ["do" ["cljx"] ["check"]]
             "jar!" ["do" ["cljx"] ["jar"]]
             "uberjar!" ["do" ["cljx"] ["uberjar"]]
-            "cljstest!" ["do" ["cljx"] ["cljsbuild" "once"] ["cljsbuild" "test"]]})
+            "cljstest!" ["do" ["cljx"] ["cljsbuild" "once"] ["cljsbuild" "test"]]}
+  :jvm-opts ^:replace [])

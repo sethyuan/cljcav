@@ -9,16 +9,44 @@
 
 (defn mapi
   "Like clojure.core/map, but with index."
-  [f coll]
-  (->> (map list (range) coll)
-       (map (fn [[k v]] (f k v)))))
+  ([f coll] (mapi f 0 coll))
+  ([f i coll]
+   (lazy-seq
+     (when-let [c (seq coll)]
+       (cons (f i (first coll)) (mapi f (inc i) (rest coll)))))))
 
 (defn filteri
-  "Like clojure.core/filter, but with key value pair."
+  "Like clojure.core/filter, but with index."
+  ([pred coll] (filteri pred 0 coll))
+  ([pred i coll]
+   (lazy-seq
+     (when-let [c (seq coll)]
+       (let [v (first coll)]
+         (if (pred i v)
+           (cons v (filteri pred (inc i) (rest coll)))
+           (filteri pred (inc i) (rest coll))))))))
+
+(defn removei
+  "Like clojure.core/remove, but with index."
+  ([pred coll] (removei pred 0 coll))
+  ([pred i coll] (filteri (complement pred) i coll)))
+
+(defn rm
+  "Like clojure.core/remove, but returns vector if coll is vector."
   [pred coll]
-  (->> (map list (range) coll)
-       (filter (fn [[k v]] (pred k v)))
-       (map (fn [[k v]] v))))
+  (let [removed (remove pred coll)]
+    (if (vector? coll)
+      (vec removed)
+      removed)))
+
+(defn rmi
+  "Like cav.core/rm, but with index."
+  ([pred coll] (rmi pred 0 coll))
+  ([pred i coll]
+   (let [removed (removei pred i coll)]
+     (if (vector? coll)
+       (vec removed)
+       removed))))
 
 
 ;; Macros for Clojure.

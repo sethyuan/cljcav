@@ -25,6 +25,21 @@
     (is (= [1 3 5] (cav/filteri (fn [i _] (= (rem i 2) 1))
                               (range 6))))))
 
+(deftest removei-test
+  (testing "simple removei"
+    (is (= '(0 1 3)
+           (cav/removei (fn [i _] (= i 2)) (range 4))))))
+
+(deftest rm-test
+  (testing "simple rm"
+    (is (= '(0 1 3)
+           (cav/rm #{2} (range 4))))))
+
+(deftest rmi-test
+  (testing "simple rmi"
+    (is (= '(0 1 3)
+           (cav/rmi (fn [i v] (= (+ i v) 4)) (range 4))))))
+
 ;; (deftest flat-lets-test
 ;;   (testing "simple."
 ;;     (is (= (flat-lets
